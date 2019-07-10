@@ -39,7 +39,7 @@
 class datadog_agent::integrations::logs(
   Array $logs = [],
 ) inherits datadog_agent::params {
-  unless $::datadog_agent::agent5_enable {
+  unless $::datadog_agent::params::agent5_enable {
     include datadog_agent
     validate_legacy('Array', 'validate_array', $logs)
 
