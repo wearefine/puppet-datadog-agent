@@ -45,8 +45,7 @@ class datadog_agent::ubuntu::agent6(
 
   package { $datadog_agent::params::package_name:
     ensure  => $agent_version,
-    require => [Apt::Source['datadog6'],
-                Class['apt::update']],
+    require => Apt::Source['datadog6'],
   }
 
   if $service_provider {
