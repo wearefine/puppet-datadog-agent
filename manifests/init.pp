@@ -308,6 +308,7 @@ class datadog_agent(
   $custom_sensitive_words = $datadog_agent::params::process_default_custom_words,
   $logs_enabled = $datadog_agent::params::logs_enabled,
   $container_collect_all = $datadog_agent::params::container_collect_all,
+  $open_files_limit = $datadog_agent::params::open_files_limit
   Hash[String[1], Data] $agent6_extra_options = {},
   $agent5_repo_uri = $datadog_agent::params::agent5_default_repo,
   $agent6_repo_uri = $datadog_agent::params::agent6_default_repo,
@@ -607,6 +608,7 @@ class datadog_agent(
         'logs_enabled' => $logs_enabled,
         'logs_config' => {
           'container_collect_all' => $container_collect_all,
+          'open_files_limit'      => $open_files_limit
         },
     }
 
