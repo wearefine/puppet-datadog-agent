@@ -19,6 +19,7 @@ class datadog_agent::params {
   $logs_enabled                   = false
   $logs_open_files_limit          = undef
   $container_collect_all          = false
+  $open_files_limit               = 100
   $use_apt_backup_keyserver       = false
   $apt_backup_keyserver           = 'hkp://pool.sks-keyservers.net:80'
   $apt_keyserver                  = 'hkp://keyserver.ubuntu.com:80'
