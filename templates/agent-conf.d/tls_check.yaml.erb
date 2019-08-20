@@ -1,0 +1,70 @@
+### MANAGED BY PUPPET
+
+init_config:
+
+instances:
+<%- (Array(@_instances)).each do |instance| -%>
+  - server: <%= instance['server'] %>
+<% if instance['port'] -%>
+    port: <%= instance['port'] %>
+<% end -%>
+<% if instance['transport'] -%>
+    transport: <%= instance['transport'] %>
+<% end -%>
+<% if instance['local_cert_path'] -%>
+    local_cert_path: <%= instance['local_cert_path'] %>
+<% end -%>
+<% if instance['server_hostname'] -%>
+    server_hostname: <%= instance['server_hostname'] %>
+<% end -%>
+<% if instance['validate_hostname'] -%>
+    validate_hostname: <%= instance['validate_hostname'] %>
+<% end -%>
+<% if instance['validate_cert'] -%>
+    validate_cert: <%= instance['validate_cert'] %>
+<% end -%>
+<% if instance['validate_cert'] -%>
+    validate_cert: <%= instance['validate_cert'] %>
+<% end -%>
+<% if instance['allowed_versions'] -%>
+    allowed_versions:
+      <%- (Array(instance['allowed_versions'])).each do |version| -%>
+      - <%= version %>
+    <% end -%>
+<% end -%>
+<% if instance['days_warning'] -%>
+    days_warning: <%= instance['days_warning'] %>
+<% end -%>
+<% if instance['days_critical'] -%>
+    days_critical: <%= instance['days_critical'] %>
+<% end -%>
+<% if instance['seconds_warning'] -%>
+    seconds_warning: <%= instance['seconds_warning'] %>
+<% end -%>
+<% if instance['seconds_critical'] -%>
+    seconds_critical: <%= instance['seconds_critical'] %>
+<% end -%>
+<% if instance['cert'] -%>
+    cert: <%= instance['cert'] %>
+<% end -%>
+<% if instance['private_key'] -%>
+    private_key: <%= instance['private_key'] %>
+<% end -%>
+<% if instance['ca_cert'] -%>
+    ca_cert: <%= instance['ca_cert'] %>
+<% end -%>
+<% if instance['timeout'] -%>
+    timeout: <%= instance['timeout'] %>
+<% end -%>
+<% if instance['name'] -%>
+    name: <%= instance['name'] %>
+<% end -%>
+<% if instance['tags'] and ! instance['tags'].empty? -%>
+    tags:
+  <%- Array(instance['tags']).each do |tag| -%>
+    <%- if tag != '' -%>
+      - <%= tag %>
+    <%- end -%>
+  <%- end -%>
+<% end -%>
+<% end -%>
