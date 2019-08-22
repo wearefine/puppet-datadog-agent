@@ -28,9 +28,9 @@ instances:
 <% end -%>
 <% if instance['allowed_versions'] -%>
     allowed_versions:
-      <%- (Array(instance['allowed_versions'])).each do |version| -%>
+<%- (Array(instance['allowed_versions'])).each do |version| -%>
       - <%= version %>
-    <% end -%>
+<% end -%>
 <% end -%>
 <% if instance['days_warning'] -%>
     days_warning: <%= instance['days_warning'] %>
