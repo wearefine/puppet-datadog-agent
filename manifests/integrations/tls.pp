@@ -127,7 +127,7 @@
 #     }
 
 
-class datadog_agent::integrations::tls_check (
+class datadog_agent::integrations::tls (
   $server                = $hostname,
   $port                  = 443,
   $transport             = 'TCP',
@@ -149,7 +149,7 @@ class datadog_agent::integrations::tls_check (
 ) inherits datadog_agent::params {
   include datadog_agent
 
-  if !$instances and $host {
+  if !$instances and $server {
     $_instances = [{
       'server'    => $server,
       'port'      => $port,
@@ -161,9 +161,9 @@ class datadog_agent::integrations::tls_check (
     $_instances = $instances
   }
 
-  $legacy_dst = "${datadog_agent::conf_dir}/tls_check.yaml"
+  $legacy_dst = "${datadog_agent::conf_dir}/tls.yaml"
   if !$::datadog_agent::agent5_enable {
-    $dst_dir = "${datadog_agent::conf6_dir}/tls_check.d"
+    $dst_dir = "${datadog_agent::conf6_dir}/tls.d"
     file { $legacy_dst:
       ensure => 'absent'
     }
@@ -186,7 +186,7 @@ class datadog_agent::integrations::tls_check (
     owner   => $datadog_agent::params::dd_user,
     group   => $datadog_agent::params::dd_group,
     mode    => '0600',
-    content => template('datadog_agent/agent-conf.d/tls_check.yaml.erb'),
+    content => template('datadog_agent/agent-conf.d/tls.yaml.erb'),
     require => Package[$datadog_agent::params::package_name],
     notify  => Service[$datadog_agent::params::service_name]
   }
