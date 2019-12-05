@@ -5,7 +5,7 @@ init_config:
 instances:
   - unit_names:
 <%- (Array(@services)).each do |service| -%>
-    - <%= @service %>
+    - <%= @service %>.service
 <% end -%>
 <% if @private_socket -%>
   private_socket: <%= @private_socket %>
