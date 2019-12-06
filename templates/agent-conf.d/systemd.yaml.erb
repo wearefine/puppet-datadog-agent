@@ -4,15 +4,15 @@ init_config:
 
 instances:
   - unit_names:
-<%- (Array(@services)).each do |service| -%>
-    - <%= @service %>.service
+<%- @services.each do |service| -%>
+    - <%= service %>.service
 <% end -%>
 <% if @private_socket -%>
   private_socket: <%= @private_socket %>
 <% end -%>
 <% if @tags and ! @tags.empty? -%>
     tags:
-  <%- Array(@tags).each do |tag| -%>
+  <%- @tags.each do |tag| -%>
     <%- if tag != '' -%>
       - <%= tag %>
     <%- end -%>
